@@ -9,7 +9,7 @@ class IntroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: const Color.fromRGBO(15, 15, 15, 25),
-      backgroundColor: const Color.fromRGBO(15, 15, 15, 25),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
@@ -25,9 +25,9 @@ class IntroPage extends StatelessWidget {
                   "Top",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.merriweather(
-                    textStyle: const TextStyle(
+                    textStyle: TextStyle(
                       fontSize: 28,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -41,7 +41,7 @@ class IntroPage extends StatelessWidget {
                   style: GoogleFonts.merriweather(
                     textStyle: TextStyle(
                       fontSize: 28,
-                      color: Colors.deepOrange[400],
+                      color: Theme.of(context).colorScheme.tertiary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -53,42 +53,44 @@ class IntroPage extends StatelessWidget {
         
             // icon
             Padding(
-              padding: const EdgeInsets.all(50.0),
-              child: Image.asset('lib/images/bag_.png'),
+              padding: const EdgeInsets.all(30.0),
+              child: Image.asset('lib/images/bag_.png',
+              height: 300,
+              color: Theme.of(context).colorScheme.primary,
+              ),
             ),
         
             // title
             Text(
               "MEN'S ONLINE T-SHIRT STORE",
               style: GoogleFonts.merriweather(
-                textStyle: const TextStyle(
+                textStyle: TextStyle(
                   fontSize: 25,
-                  color: Colors.deepOrangeAccent,
+                  color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
 
-            const SizedBox(height: 20),
-            // sub
-            Text(
-              "We cover a wide variety of sizes for all, we ship to all regions around the globe",
-              style: GoogleFonts.merriweatherSans(
-                textStyle: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey[300],
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ),
+            // const SizedBox(height: 20),
+            // // sub
+            // Text(
+            //   "We cover a wide variety of sizes for all, we ship to all regions around the globe",
+            //   style: GoogleFonts.merriweatherSans(
+            //     textStyle: TextStyle(
+            //       fontSize: 18,
+            //       color: Theme.of(context).colorScheme.tertiary,
+            //       fontWeight: FontWeight.normal,
+            //     ),
+            //   ),
+            // ),
 
             const SizedBox(height: 30),
         
             // button
             CustomButton(text: "Get Started",
-            icon: Icons.arrow_forward_rounded,
-            color: Colors.deepOrange[400],
-            onTap: () {
+              color: Theme.of(context).colorScheme.primary,
+              onTap: () {
               // go to home page
               Navigator.pushNamed(context, '/homepage');
             },

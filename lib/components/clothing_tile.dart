@@ -11,7 +11,7 @@ class ClothingTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: Theme.of(context).colorScheme.tertiary,
         borderRadius: BorderRadius.circular(15),
       ),
       margin: const EdgeInsets.only(left: 20.0),
@@ -30,7 +30,7 @@ class ClothingTile extends StatelessWidget {
           style: GoogleFonts.merriweather(
             textStyle: TextStyle(
               fontSize: 18,
-              color: Colors.grey[900],
+              color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.bold,
             ),
           ),),
@@ -39,7 +39,7 @@ class ClothingTile extends StatelessWidget {
             child: Text('\$ ${clothes.price}',
             style: GoogleFonts.merriweather(
               textStyle: TextStyle(
-                color: Colors.grey[900],
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: 16,
                 fontWeight: FontWeight.normal,
               ),
