@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:top_store/components/button.dart';
 import 'package:top_store/components/clothing_tile.dart';
 import 'package:top_store/models/clothing.dart';
+import 'package:top_store/pages/item_details_page.dart';
 import 'package:top_store/themes/theme_provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       name: 'Regular Tee',
       price: '13.99',
       imagePath: 'lib/images/tee.jpg' ,
-      rating: '4.0',
+      rating: '4.5',
     ),
     // regular tshirt
     Clothes(
@@ -35,15 +36,25 @@ class _HomePageState extends State<HomePage> {
       name: 'Regular Fit Slogan',
       price: '13.99',
       imagePath: 'lib/images/greco.jpg' ,
-      rating: '4.0',
+      rating: '3.8',
     ),
     Clothes(
       name: 'Branded',
       price: '13.99',
       imagePath: 'lib/images/chucky.jpg' ,
-      rating: '4.0',
+      rating: '4.9',
     ),
   ];
+
+  // go to item details page
+  void navigateToItemDetails(int index){
+    // ignore: prefer_const_constructors
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetails(
+          clothes: clothingMenu[index],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -172,7 +183,10 @@ class _HomePageState extends State<HomePage> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: clothingMenu.length,
-                  itemBuilder: (context, index) => ClothingTile(clothes: clothingMenu[index]),
+                  itemBuilder: (context, index) => ClothingTile(
+                    clothes: clothingMenu[index],
+                    onTap: () => navigateToItemDetails(index),
+                  ),
                 ),
               ),
 
