@@ -90,6 +90,7 @@ class IntroPage extends StatelessWidget {
             // button
             CustomButton(text: "Get Started",
               color: Theme.of(context).colorScheme.primary,
+              icon: Icon(Icons.alarm, color: Theme.of(context).colorScheme.background,),
               onTap: () {
               // go to home page
               Navigator.pushNamed(context, '/homepage');

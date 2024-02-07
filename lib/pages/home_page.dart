@@ -20,27 +20,27 @@ class _HomePageState extends State<HomePage> {
   List clothingMenu = [
     Clothes(
       name: 'Regular Tee',
-      price: '13.99',
+      price: '35.99',
       imagePath: 'lib/images/tee.jpg' ,
       rating: '4.5',
     ),
     // regular tshirt
     Clothes(
       name: 'Branded',
-      price: '13.99',
+      price: '29.00',
       imagePath: 'lib/images/ssrc.jpg' ,
       rating: '4.0',
     ),
     // some tshirt
     Clothes(
       name: 'Regular Fit Slogan',
-      price: '13.99',
+      price: '18.89',
       imagePath: 'lib/images/greco.jpg' ,
       rating: '3.8',
     ),
     Clothes(
       name: 'Branded',
-      price: '13.99',
+      price: '43.00',
       imagePath: 'lib/images/chucky.jpg' ,
       rating: '4.9',
     ),
@@ -126,8 +126,14 @@ class _HomePageState extends State<HomePage> {
 
                         //redeem button
                         CustomButton(text: 'redeem',
-                        color: Theme.of(context).colorScheme.primary,
-                         onTap: (){})
+                          color: Theme.of(context).colorScheme.primary,
+                          icon: Icon(
+                            Icons.gif_box_rounded,
+                            size: 24,
+                            color: Theme.of(context).colorScheme.background,
+                          ),
+                          onTap: (){
+                          })
                       ],
                     ),
 
@@ -224,6 +230,7 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onTap: (){
                         // opens the cart page
+                        Navigator.pushNamed(context, '/cartpage');
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),

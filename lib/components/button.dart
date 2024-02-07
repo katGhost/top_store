@@ -4,12 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final color;
+  final icon;
   final void Function()? onTap;
 
   const CustomButton({
     super.key,
     required this.text,
     required this.color,
+    required this.icon,
     required this.onTap,
   });
 
@@ -39,9 +41,7 @@ class CustomButton extends StatelessWidget {
       
             const SizedBox(width: 15),
       
-            Icon(Icons.arrow_forward_rounded,
-            color: Theme.of(context).colorScheme.tertiary,
-            ),
+            icon
           ],
         ),
       ),
