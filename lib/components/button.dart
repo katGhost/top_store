@@ -32,7 +32,7 @@ class CustomButton extends StatelessWidget {
             style: GoogleFonts.merriweatherSans(
                       textStyle: TextStyle(
                         fontSize: 18,
-                        color: Theme.of(context).colorScheme.tertiary,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.normal,
                         letterSpacing: 1.0
                       ),

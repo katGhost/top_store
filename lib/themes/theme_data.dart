@@ -7,8 +7,8 @@ ThemeData lightMode = ThemeData(
   colorScheme: ColorScheme.light(
     background: bgLight,
     primary: Colors.black,
-    secondary: Colors.deepOrangeAccent,
-    tertiary: Colors.grey[300]
+    secondary: Colors.orange,
+    tertiary: Colors.grey[400]
   )
 );
 
@@ -18,7 +18,7 @@ ThemeData darkMode = ThemeData(
   colorScheme: ColorScheme.dark(
     background: bgDark,
     primary: Colors.white,
-    secondary: Colors.deepOrangeAccent,
+    secondary: Colors.orange,
     tertiary: Colors.grey[900],
   )
 );

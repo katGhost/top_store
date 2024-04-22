@@ -14,6 +14,7 @@ class ItemDetails extends StatefulWidget {
 }
 
 class _ItemDetailsState extends State<ItemDetails> {
+  bool isPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -120,17 +121,34 @@ class _ItemDetailsState extends State<ItemDetails> {
 
                   const SizedBox(height: 10),
               
-                  const Row(
+                  Row(
                     children: [
-                      SizesBtn(size: 'S',),
+                      SizesBtn(size: 'S',
+                      onTap: () {
+                      },
+                      ),
               
-                      SizedBox(width: 15),
+                      const SizedBox(width: 15),
               
-                      SizesBtn(size: 'M',),
+                      SizesBtn(
+                        size: 'M',
+                        onTap: () {
+                          setState(() {
+                            isPressed = !isPressed;
+                          });
+                        },
+                      ),
               
-                      SizedBox(width: 15),
+                      const SizedBox(width: 15),
               
-                      SizesBtn(size: 'L',),
+                      SizesBtn(
+                        size: 'L',
+                        onTap: () {
+                          setState(() {
+                            isPressed = !isPressed;
+                          });
+                        },
+                      ),
                     ],
                   ),
                   const SizedBox(height: 25),

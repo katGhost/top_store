@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:top_store/components/button.dart';
 import 'package:top_store/components/clothing_tile.dart';
 import 'package:top_store/models/clothing.dart';
+import 'package:top_store/pages/cart_page.dart';
 import 'package:top_store/pages/item_details_page.dart';
 import 'package:top_store/themes/theme_provider.dart';
 
@@ -56,6 +57,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void navigateToCart(int index) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => UserCart(
+        clothes: clothingMenu[index], 
+      ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,17 +101,40 @@ class _HomePageState extends State<HomePage> {
                   ),
           
                   Icon(
-                    Icons.notification_important_outlined,
+                    Icons.notifications_none_rounded,
                     color: Theme.of(context).colorScheme.primary,
-                    size: 25,
+                    size: 28,
                   )
                 ],
               ),
 
               // Banner
               Container(
-                decoration: BoxDecoration (color: Theme.of(context).colorScheme.tertiary,
-                borderRadius: BorderRadius.circular(20)),
+                decoration: BoxDecoration (
+                  gradient: const LinearGradient(colors:[ Colors.amber, Colors.purpleAccent],
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(context).colorScheme.tertiary,
+                      offset: const Offset(
+                        5.0,
+                        5.0
+                      ),
+                      blurRadius: 10.0,
+                      spreadRadius: 2.0,
+                    ),
+                    const BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(
+                        0.0,
+                        0.0
+                      ),
+                      blurRadius: 0.0,
+                      spreadRadius: 0.0,
+                    ),
+                  ],
+                ),
                 margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Row(
@@ -125,12 +157,12 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(height: 20),
 
                         //redeem button
-                        CustomButton(text: 'redeem',
-                          color: Theme.of(context).colorScheme.primary,
+                        CustomButton(text: 'get now!',
+                          color: Colors.amber[700],
                           icon: Icon(
-                            Icons.gif_box_rounded,
+                            Icons.card_giftcard_rounded,
                             size: 24,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                           onTap: (){
                           })
@@ -140,7 +172,6 @@ class _HomePageState extends State<HomePage> {
                     // side image
                     Image.asset('lib/images/bag_.png',
                      height: 100,
-                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ],
                 ),
@@ -153,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: "search anything...",
+                    hintText: "search here...",
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                       borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
@@ -210,54 +241,61 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     // back button, for now
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/intropage');
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.tertiary,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Icon(Icons.arrow_back_rounded,
-                          color: Theme.of(context).colorScheme.primary,
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/intropage');
+                          
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.secondary,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Icon(Icons.arrow_back_rounded,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ),
                     ),
 
                     // cart button
-                    GestureDetector(
-                      onTap: (){
-                        // opens the cart page
-                        Navigator.pushNamed(context, '/cartpage');
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.tertiary,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Icon(Icons.shopping_bag_outlined,
-                          color: Theme.of(context).colorScheme.primary,
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        //onTap: () => navigateToCart(),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.secondary,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Icon(Icons.shopping_bag_outlined,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ),
                     ),
 
                     // light mode dark mode button
-                    GestureDetector(
-                      onTap: (){
-                        // toggles the theme (dark/light)
-                        Provider.of<ThemeProvider>(context, listen: false).toggleThemeMode();
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.tertiary,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Icon(Icons.sunny,
-                          color: Theme.of(context).colorScheme.primary,
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: (){
+                          // toggles the theme (dark/light)
+                          Provider.of<ThemeProvider>(context, listen: false).toggleThemeMode();
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.secondary,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Icon(Icons.sunny,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ),
                     ),

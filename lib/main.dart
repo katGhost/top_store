@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:top_store/pages/cart_page.dart';
 import 'package:top_store/pages/home_page.dart';
 import 'package:top_store/themes/theme_provider.dart';
 
@@ -28,7 +27,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/intropage': (context) => const IntroPage(),
         '/homepage': (context) => const HomePage(),
-        '/cartpage':(context) => const UserCart(),
       },
     );
   }

@@ -41,7 +41,7 @@ class IntroPage extends StatelessWidget {
                   style: GoogleFonts.merriweather(
                     textStyle: TextStyle(
                       fontSize: 28,
-                      color: Theme.of(context).colorScheme.tertiary,
+                      color: Theme.of(context).colorScheme.secondary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -56,7 +56,6 @@ class IntroPage extends StatelessWidget {
               padding: const EdgeInsets.all(30.0),
               child: Image.asset('lib/images/bag_.png',
               height: 300,
-              color: Theme.of(context).colorScheme.primary,
               ),
             ),
         
@@ -72,25 +71,12 @@ class IntroPage extends StatelessWidget {
               ),
             ),
 
-            // const SizedBox(height: 20),
-            // // sub
-            // Text(
-            //   "We cover a wide variety of sizes for all, we ship to all regions around the globe",
-            //   style: GoogleFonts.merriweatherSans(
-            //     textStyle: TextStyle(
-            //       fontSize: 18,
-            //       color: Theme.of(context).colorScheme.tertiary,
-            //       fontWeight: FontWeight.normal,
-            //     ),
-            //   ),
-            // ),
-
             const SizedBox(height: 30),
         
             // button
             CustomButton(text: "Get Started",
-              color: Theme.of(context).colorScheme.primary,
-              icon: Icon(Icons.alarm, color: Theme.of(context).colorScheme.background,),
+              color: Theme.of(context).colorScheme.secondary,
+              icon: Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.primary,),
               onTap: () {
               // go to home page
               Navigator.pushNamed(context, '/homepage');
